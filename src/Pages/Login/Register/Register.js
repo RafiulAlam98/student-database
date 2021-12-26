@@ -3,34 +3,45 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Container, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import useAuth from './../../../hooks/useAuth/useAuth';
 
 
+const Register = () => {
 
-const Login = () => {
-     const [loginData, setLoginData] = useState({})
+     // const {registerUser} = useAuth()
 
-     
+     const [registerData, setRegisterData] = useState()
      const handleOnBlur = e =>{
           const field = e.target.name
           const value = e.target.value
-          const newLoginData = {...loginData}
-          newLoginData[field] = value
-          console.log(newLoginData)
-          setLoginData(newLoginData)
+          const newRegisterData = {...registerData}
+          newRegisterData[field] = value
+          console.log(newRegisterData)
+          setRegisterData(newRegisterData)
      }
 
-     const handleSubmit = () =>{
-          
+     const handleSubmit = e =>{
+          console.log(registerData.email,registerData.password)
+          // registerUser(registerData.email,registerData.password)
+          e.preventDefault()
      }
      return (
-          <Container>
+               <Container>
                <Grid container spacing={2}>
                     <Grid  sx={{width:'75%', mt:10}} item xs={12} md={12}>
                          <Typography variant="body1" gutterBottom>
-                              Login to your account
+                              Create a new Account
                          </Typography>
                          <form onSubmit={handleSubmit}>
+                              <TextField
+                                   required
+                                   id="outlined-required"
+                                   label="Enter Your Name"
+                                   sx={{width:'75%',m:1}}
+                                   onBlur={handleOnBlur}
+                                   name="name"
+                                   helperText="Your name"
+                              />
                               <TextField
                                    required
                                    id="outlined-required"
@@ -57,11 +68,6 @@ const Login = () => {
                                    type="submit"
                                    >Login
                               </Button>
-                              <Link style={{textDecoration:'none'}} to="/register">
-                                   <Typography  variant="body1" gutterBottom>
-                                        Not an Account? Register
-                                   </Typography>
-                              </Link>
                          </form>
                     </Grid>
                </Grid>
@@ -69,4 +75,4 @@ const Login = () => {
      );
 };
 
-export default Login;
+export default Register;
