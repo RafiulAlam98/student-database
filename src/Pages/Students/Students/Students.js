@@ -38,7 +38,7 @@ function Students(props) {
 
   const drawer = (
     <div>
-     <Typography sx={{m:3, color:'#FF6F61', fontWeight:'larger'}} variant="h5" noWrap component="div">
+     <Typography sx={{m:3, color:'black'}} variant="h5" noWrap component="div">
             LEAD LOGO
      </Typography>
      <Toolbar />
