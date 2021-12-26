@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { Button, Container, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Alert from '@mui/material/Alert';
+
 
 
 const AddStudent = () => {
@@ -16,14 +14,31 @@ const AddStudent = () => {
                const value = e.target.value
                const newRegisterData = {...studentInfo}
                newRegisterData[field] = value
-               console.log(newRegisterData)
                setStudentInfo(newRegisterData)
+               e.target.value = ""
           }
 
 
           const handleSubmit = e =>{
-               
+               console.log(studentInfo)
+               fetch('http://localhost:5000/students',{
+                    method:'POST',
+                    headers:{
+                         "content-type":"application/json"
+                    },
+                    body:JSON.stringify(studentInfo)
+               })
+               .then(res => res.json())
+               .then(data =>{
+                    console.log(data)
+                    if(data.acknowledged === true){
+                         alert("Information saved successfully") 
+                         e.target.value=""
+                    }
+                    return
+               })
                e.preventDefault()
+              
           }
      return (
           <Container>
