@@ -11,6 +11,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import LogoutIcon from '@mui/icons-material/Logout';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import {
      Switch,
@@ -20,13 +22,15 @@ import {
    } from "react-router-dom";
 import ViewStudents from '../ViewStudents/ViewStudents';
 import AddStudent from '../AddStudent/AddStudent';
+import useAuth from './../../../hooks/useAuth/useAuth';
 
 const drawerWidth = 200;
 
 function Students(props) {
+  const {user,userSignOut} = useAuth()
      let { path, url } = useRouteMatch();
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+      const { window } = props;
+      const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -34,7 +38,7 @@ function Students(props) {
 
   const drawer = (
     <div>
-     <Typography sx={{mt:3, color:'red'}} variant="h6" noWrap component="div">
+     <Typography sx={{m:3, color:'#FF6F61', fontWeight:'larger'}} variant="h5" noWrap component="div">
             LEAD LOGO
      </Typography>
      <Toolbar />
@@ -83,9 +87,20 @@ function Students(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Dashboard
+          
+          <Typography variant="h6" sx={{color:'goldenrod'}} noWrap component="div">
+            Welcome  {user.displayName}
           </Typography>
+          <Button 
+              sx={{ml:2,color:'white'}}
+              ><NotificationsIcon></NotificationsIcon>
+          </Button>
+
+          <Button 
+              sx={{ml:2,color:'white'}}
+              onClick={userSignOut}
+              ><LogoutIcon></LogoutIcon>
+          </Button>
         </Toolbar>
       </AppBar>
       <Box

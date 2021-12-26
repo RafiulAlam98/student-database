@@ -16,6 +16,7 @@ const useFirebase = () =>{
           setIsLoading(true)
           createUserWithEmailAndPassword(auth, email, password)
                .then(() => {
+                    
                     const newUser = {email, displayName:name}
                     setUser(newUser)
                     setError("")

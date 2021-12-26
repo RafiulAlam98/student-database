@@ -90,13 +90,7 @@ const Login = () => {
                                              {error}
                                         </Alert>
                          }
-                         <Button 
-                              sx={{width:'50%',m:2}}
-                              variant="contained"
-                              type="submit"
-                              onClick={userSignOut}
-                              >Sign Out
-                         </Button>
+                         
                     </Grid>
                </Grid>
           </Container>

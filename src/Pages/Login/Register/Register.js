@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Container, Typography } from '@mui/material';
 import useAuth from './../../../hooks/useAuth/useAuth';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 
 
@@ -80,6 +80,11 @@ const Register = () => {
                                    type="submit"
                                    >Login
                               </Button>
+                              <Link style={{textDecoration:'none'}} to="/login">
+                                   <Typography  variant="body1" gutterBottom>
+                                        Already registered?
+                                   </Typography>
+                              </Link>
                          </form>
                          }
                          {
