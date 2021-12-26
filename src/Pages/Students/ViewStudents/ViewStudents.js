@@ -1,3 +1,4 @@
+import { Divider } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ViewStudentNavigation from './ViewStudentNavigation/ViewStudentNavigation';
 import ViewStudentTable from './ViewStudentTable/ViewStudentTable';
@@ -17,6 +18,7 @@ const ViewStudents = () => {
      return (
           <div>
                <ViewStudentNavigation></ViewStudentNavigation>
+               <Divider/>
                <ViewStudentTable studentsInfo={studentsInfo}></ViewStudentTable>
                
           </div>

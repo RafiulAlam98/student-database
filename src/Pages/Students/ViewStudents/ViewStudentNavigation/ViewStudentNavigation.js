@@ -5,7 +5,8 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 
 const ViewStudentNavigation = () => {
      const [school, setSchool] = React.useState('');
@@ -13,11 +14,11 @@ const ViewStudentNavigation = () => {
      const [division, setDivision] = React.useState('');
 
      const handleChange = (event) => {
-          setSchool(event.target.value);
+          // setSchool(event.target.value);
          
      };
      return (
-          <Container>
+          <Container sx={{m:3}}>
                <Grid container spacing={2}>
                     <Grid item xs={12} md={2}>
                          <TextField
@@ -34,49 +35,55 @@ const ViewStudentNavigation = () => {
                          />
                     </Grid>
                     <Grid item xs={12} md={2}>
-                         <Select
-                              id="demo-simple-select"
-                              value={school}
-                              label="School"
-                              size='small'
-                              defaultValue='School'
-                              onChange={handleChange}
-                              
-                         >
-                              <MenuItem>LEAD School </MenuItem>
-                              <MenuItem>LEAD School </MenuItem>
-                              <MenuItem>LEAD School </MenuItem>
-                         </Select>
-                    </Grid>
-                    <Grid item xs={12} md={2}>
-                         <Select
+                         <FormControl sx={{width:'75%'}}>
+                              <InputLabel id="demo-simple-select-label">School</InputLabel>
+                              <Select
+                                   labelId="demo-simple-select-label"
                                    id="demo-simple-select"
-                                   value={classes}
-                                   label="Class"
                                    size='small'
+                                   label="School"
                                    onChange={handleChange}
                               >
-                                   <MenuItem>3</MenuItem>
-                                   <MenuItem>4</MenuItem>
-                                   <MenuItem>5</MenuItem>
-                         </Select>
+                                   <MenuItem value={10}>LEAD School</MenuItem>
+                                   <MenuItem value={20}>LEAD School</MenuItem>
+                                   <MenuItem value={30}>LEAD School</MenuItem>
+                              </Select>
+                         </FormControl>
                     </Grid>
                     <Grid item xs={12} md={2}>
-                    <Select
-                              id="demo-simple-select"
-                              value={division}
-                              label="Division"
-                              size='small'
-                              onChange={handleChange}
-                              
-                         >
-                              <MenuItem value={10}>A</MenuItem>
-                              <MenuItem value={20}>A</MenuItem>
-                              <MenuItem value={30}>A</MenuItem>
-                         </Select>
+                         <FormControl sx={{width:'75%'}}>
+                              <InputLabel id="demo-simple-select-label">School</InputLabel>
+                              <Select
+                                   labelId="demo-simple-select-label"
+                                   id="demo-simple-select"
+                                   size='small'
+                                   label="Class"
+                                   onChange={handleChange}
+                              >
+                                   <MenuItem value={10}>3</MenuItem>
+                                   <MenuItem value={20}>3</MenuItem>
+                                   <MenuItem value={30}>3</MenuItem>
+                              </Select>
+                         </FormControl>
                     </Grid>
                     <Grid item xs={12} md={2}>
-                         <Button variant='contained' size="small">Small</Button>
+                         <FormControl sx={{width:'75%'}}>
+                                   <InputLabel id="demo-simple-select-label">Division</InputLabel>
+                                   <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        size='small'
+                                        label="Division"
+                                        onChange={handleChange}
+                                   >
+                                        <MenuItem value={10}>A</MenuItem>
+                                        <MenuItem value={20}>A</MenuItem>
+                                        <MenuItem value={30}>A</MenuItem>
+                                   </Select>
+                         </FormControl>
+                    </Grid>
+                    <Grid item xs={12} md={2}>
+                         <Button variant='contained' size="small">Search</Button>
                     </Grid>
                </Grid>
           </Container>
