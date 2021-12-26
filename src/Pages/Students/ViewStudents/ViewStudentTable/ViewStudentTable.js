@@ -12,7 +12,11 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 
+
+
 export default function ViewStudentTable({studentsInfo}) {
+  
+ 
 
   const handleDelete = id =>{
     const proceed = window.confirm('Are you sure to delete this student information?')

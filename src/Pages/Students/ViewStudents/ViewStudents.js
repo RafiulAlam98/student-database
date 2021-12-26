@@ -5,6 +5,7 @@ import ViewStudentTable from './ViewStudentTable/ViewStudentTable';
 
 const ViewStudents = () => {
      const [studentsInfo,setStudentsInfo] = useState([])
+     
 
      useEffect(()=>{
           fetch('http://localhost:5000/students')
