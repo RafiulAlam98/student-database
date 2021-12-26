@@ -21,7 +21,7 @@ const AddStudent = () => {
 
           const handleSubmit = e =>{
                console.log(studentInfo)
-               fetch('http://localhost:5000/students',{
+               fetch('https://radiant-sands-72054.herokuapp.com/students',{
                     method:'POST',
                     headers:{
                          "content-type":"application/json"

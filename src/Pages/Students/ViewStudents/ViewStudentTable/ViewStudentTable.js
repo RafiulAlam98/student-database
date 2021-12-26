@@ -21,7 +21,7 @@ export default function ViewStudentTable({studentsInfo}) {
   const handleDelete = id =>{
     const proceed = window.confirm('Are you sure to delete this student information?')
     if(proceed){
-         fetch(`http://localhost:5000/students/${id}`,{
+         fetch(`https://radiant-sands-72054.herokuapp.com/${id}`,{
               method:"DELETE"
          })
          .then(res => res.json())
@@ -35,7 +35,7 @@ export default function ViewStudentTable({studentsInfo}) {
 }
 
     const handleUpdate = id =>{
-      fetch(`http://localhost:5000/students/${id}`,{
+      fetch(`https://radiant-sands-72054.herokuapp.com/students/${id}`,{
           method:'PUT',
           headers:{
                 "content-type": "application/json",
