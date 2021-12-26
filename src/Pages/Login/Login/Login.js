@@ -8,13 +8,16 @@ import { Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import useAuth from './../../../hooks/useAuth/useAuth';
+import { useLocation } from 'react-router-dom';
 
 
 
 const Login = () => {
      const [loginData, setLoginData] = useState({})
      const {user,userSignIn,isLoading, error,userSignOut} = useAuth()
+     const location = useLocation()
      const history = useHistory()
+
      
      const handleOnBlur = e =>{
           const field = e.target.name
@@ -26,7 +29,7 @@ const Login = () => {
      }
 
      const handleSubmit = e =>{
-          userSignIn(loginData.email,loginData.password,history)
+          userSignIn(loginData.email,loginData.password,history,location)
           e.preventDefault()
      }
      return (
@@ -69,7 +72,7 @@ const Login = () => {
                                         </Button>
                                         <Link style={{textDecoration:'none'}} to="/register">
                                              <Typography  variant="body1" gutterBottom>
-                                                  Not an Account? Register
+                                                  Not an Account? Please register
                                              </Typography>
                                         </Link>
                                    </form>

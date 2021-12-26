@@ -6,15 +6,16 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Container, Typography } from '@mui/material';
 import useAuth from './../../../hooks/useAuth/useAuth';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 
 const Register = () => {
 
      const {user,registerUser,isLoading, error} = useAuth()
-     const history = useHistory()
      const [registerData, setRegisterData] = useState()
+     const location = useLocation()
+     const history = useHistory()
 
 
      const handleOnBlur = e =>{
@@ -28,7 +29,7 @@ const Register = () => {
 
      const handleSubmit = e =>{
           
-          registerUser(registerData.email, registerData.password, registerData.name, history)
+          registerUser(registerData.email, registerData.password, registerData.name, history, location)
           e.preventDefault()
      }
      return (
