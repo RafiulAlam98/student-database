@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Container, Typography } from '@mui/material';
 import useAuth from './../../../hooks/useAuth/useAuth';
+import { useHistory } from 'react-router-dom';
+
 
 
 const Register = () => {
 
-     // const {registerUser} = useAuth()
-
+     const {user,registerUser,isLoading, error} = useAuth()
+     const history = useHistory()
      const [registerData, setRegisterData] = useState()
+
+
      const handleOnBlur = e =>{
           const field = e.target.name
           const value = e.target.value
@@ -21,18 +27,23 @@ const Register = () => {
      }
 
      const handleSubmit = e =>{
-          console.log(registerData.email,registerData.password)
-          // registerUser(registerData.email,registerData.password)
+          
+          registerUser(registerData.email, registerData.password, registerData.name, history)
           e.preventDefault()
      }
      return (
                <Container>
                <Grid container spacing={2}>
                     <Grid  sx={{width:'75%', mt:10}} item xs={12} md={12}>
-                         <Typography variant="body1" gutterBottom>
-                              Create a new Account
-                         </Typography>
-                         <form onSubmit={handleSubmit}>
+                         
+
+                         {
+                              !isLoading && 
+                             
+                              <form onSubmit={handleSubmit}>
+                                   <Typography variant="body1" gutterBottom>
+                                        Create a new Account
+                                   </Typography>
                               <TextField
                                    required
                                    id="outlined-required"
@@ -69,6 +80,20 @@ const Register = () => {
                                    >Login
                               </Button>
                          </form>
+                         }
+                         {
+                              isLoading && <CircularProgress />
+                         }
+                         {
+                              user?.email && <Alert sx={{m:1}} variant="outlined" severity="success">
+                                                  User registered successfully
+                                             </Alert>
+                         }
+                         {
+                              error && <Alert variant="outlined" severity="error">
+                                             {error}
+                                        </Alert>
+                         }
                     </Grid>
                </Grid>
           </Container>
