@@ -29,6 +29,24 @@ export default function ViewStudentTable({studentsInfo}) {
          })
     }
 }
+
+    const handleUpdate = id =>{
+      fetch(`http://localhost:5000/students/${id}`,{
+          method:'PUT',
+          headers:{
+                "content-type": "application/json",
+          },
+          body:JSON.stringify(studentsInfo)
+
+      })
+      .then(res => res.json())
+      .then(data =>{
+          if(data.modifiedCount>0){
+                alert('Status Updated Successfully')
+          }
+          console.log(data)
+      })
+    }
   
   return (
     <>
@@ -60,7 +78,7 @@ export default function ViewStudentTable({studentsInfo}) {
                 <TableCell align="center">{student.division}</TableCell>
                 <TableCell align="center">{student.status}</TableCell>
                 <TableCell align="center">
-                  <Button>Edit</Button>
+                  <Button onClick={()=> handleUpdate(student._id)}>Edit</Button>
                   <Button onClick={() => handleDelete(student._id)}>Delete</Button>
                 </TableCell>
               </TableRow>

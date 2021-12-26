@@ -15,7 +15,6 @@ const AddStudent = () => {
                const newRegisterData = {...studentInfo}
                newRegisterData[field] = value
                setStudentInfo(newRegisterData)
-               e.target.value = ""
           }
 
 
