@@ -11,7 +11,22 @@ import { Button } from '@mui/material';
 
 
 export default function ViewStudentTable({studentsInfo}) {
-  console.log(studentsInfo)
+
+  const handleDelete = id =>{
+    const proceed = window.confirm('Are You sure to remove this product?')
+    if(proceed){
+         fetch(`http://localhost:5000/students/${id}`,{
+              method:"DELETE"
+         })
+         .then(res => res.json())
+         .then(data => {
+              
+              if(data.deletedCount > 0){    
+                   alert('deleted successfully')
+              }
+         })
+    }
+}
   
   return (
     <TableContainer component={Paper} sx={{m:3}}>
@@ -43,7 +58,7 @@ export default function ViewStudentTable({studentsInfo}) {
             <TableCell align="center">{student.status}</TableCell>
             <TableCell align="center">
               <Button>Edit</Button>
-              <Button>Delete</Button>
+              <Button onClick={() => handleDelete(student._id)}>Delete</Button>
             </TableCell>
           </TableRow>
         ))}
